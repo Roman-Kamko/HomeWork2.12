@@ -1,6 +1,5 @@
 package edu.skypro.homework.controller;
 
-import edu.skypro.homework.exception.DivisionByZeroException;
 import edu.skypro.homework.exception.NoArgumentSpecifiedException;
 import edu.skypro.homework.service.CalcService;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -67,7 +66,7 @@ public class CalcController {
         return "Аргумент не задан";
     }
 
-    @ExceptionHandler({DivisionByZeroException.class})
+    @ExceptionHandler({IllegalArgumentException.class})
     public String handleZeroException() {
         return "Деление на ноль не определенно";
     }

@@ -1,6 +1,5 @@
 package edu.skypro.homework.service.impl;
 
-import edu.skypro.homework.exception.DivisionByZeroException;
 import edu.skypro.homework.exception.NoArgumentSpecifiedException;
 import org.junit.jupiter.api.Test;
 
@@ -121,7 +120,7 @@ class CalcServiceImplTest {
     }
 
     @Test
-    public void shouldThrowDivisionByZeroExceptionWithMethodDivide() {
-        assertThrows(DivisionByZeroException.class, () -> out.divide(NUM1, ZERO));
+    public void shouldThrowIllegalArgumentExceptionWithMethodDivide() {
+        assertThrows(IllegalArgumentException.class, () -> out.divide(NUM1, ZERO));
     }
 }
