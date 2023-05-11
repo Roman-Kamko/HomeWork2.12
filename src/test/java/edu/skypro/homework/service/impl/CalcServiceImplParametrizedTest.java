@@ -1,5 +1,7 @@
 package edu.skypro.homework.service.impl;
 
+import edu.skypro.homework.exception.NoArgumentSpecifiedException;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -8,6 +10,7 @@ import java.util.stream.Stream;
 
 import static edu.skypro.homework.constants.CalcServiceImplTestConstants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CalcServiceImplParametrizedTest {
     private final CalcServiceImpl out = new CalcServiceImpl(new ValidatorServiceImpl());
@@ -44,34 +47,34 @@ class CalcServiceImplParametrizedTest {
         assertEquals(expected, actual);
     }
 
-//    @ParameterizedTest
-//    @MethodSource("provideParamsForExceptionsTests")
-//    public void shouldThrowNoArgumentSpecifiedExceptionWithMethodPlus(Integer num1, Integer num2) {
-//        assertThrows(NoArgumentSpecifiedException.class, () -> out.plus(num1, num2));
-//    }
-//
-//    @ParameterizedTest
-//    @MethodSource("provideParamsForExceptionsTests")
-//    public void shouldThrowNoArgumentSpecifiedExceptionWithMethodMinus(Integer num1, Integer num2) {
-//        assertThrows(NoArgumentSpecifiedException.class, () -> out.minus(num1, num2));
-//    }
-//
-//    @ParameterizedTest
-//    @MethodSource("provideParamsForExceptionsTests")
-//    public void shouldThrowNoArgumentSpecifiedExceptionWithMethodMultiply(Integer num1, Integer num2) {
-//        assertThrows(NoArgumentSpecifiedException.class, () -> out.multiply(num1, num2));
-//    }
-//
-//    @ParameterizedTest
-//    @MethodSource("provideParamsForExceptionsTests")
-//    public void shouldThrowNoArgumentSpecifiedExceptionWithMethodDivide(Integer num1, Integer num2) {
-//        assertThrows(NoArgumentSpecifiedException.class, () -> out.divide(num1, num2));
-//    }
-//
-//    @Test
-//    public void shouldThrowIllegalArgumentExceptionWithMethodDivide() {
-//        assertThrows(IllegalArgumentException.class, () -> out.divide(NUM1, ZERO));
-//    }
+    @ParameterizedTest
+    @MethodSource("provideParamsForExceptionsTests")
+    public void shouldThrowNoArgumentSpecifiedExceptionWithMethodPlus(Integer num1, Integer num2) {
+        assertThrows(NoArgumentSpecifiedException.class, () -> out.plus(num1, num2));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideParamsForExceptionsTests")
+    public void shouldThrowNoArgumentSpecifiedExceptionWithMethodMinus(Integer num1, Integer num2) {
+        assertThrows(NoArgumentSpecifiedException.class, () -> out.minus(num1, num2));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideParamsForExceptionsTests")
+    public void shouldThrowNoArgumentSpecifiedExceptionWithMethodMultiply(Integer num1, Integer num2) {
+        assertThrows(NoArgumentSpecifiedException.class, () -> out.multiply(num1, num2));
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideParamsForExceptionsTests")
+    public void shouldThrowNoArgumentSpecifiedExceptionWithMethodDivide(Integer num1, Integer num2) {
+        assertThrows(NoArgumentSpecifiedException.class, () -> out.divide(num1, num2));
+    }
+
+    @Test
+    public void shouldThrowIllegalArgumentExceptionWithMethodDivide() {
+        assertThrows(IllegalArgumentException.class, () -> out.divide(NUM1, ZERO));
+    }
 
     public static Stream<Arguments> provideParamsForCorrectValueTests() {
         return Stream.of(
@@ -81,10 +84,10 @@ class CalcServiceImplParametrizedTest {
         );
     }
 
-//    public static Stream<Arguments> provideParamsForExceptionsTests() {
-//        return Stream.of(
-//                Arguments.of(NUM1, null),
-//                Arguments.of(null, NUM1)
-//        );
-//    }
+    public static Stream<Arguments> provideParamsForExceptionsTests() {
+        return Stream.of(
+                Arguments.of(NUM1, null),
+                Arguments.of(null, NUM1)
+        );
+    }
 }
